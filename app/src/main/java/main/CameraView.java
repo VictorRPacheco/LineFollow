@@ -1,4 +1,5 @@
 package main;
+
 import android.content.Context;
 import android.graphics.Color;
 import android.hardware.Camera;
@@ -6,7 +7,6 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.ImageView;
-
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -135,8 +135,15 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
             //if we are not processing, we need to display the camera results in the buttons
             for (i = 0; i < 5; i++)
                 mBlocks.get(i).setBackgroundColor(mBlocksMedian[i] > colorDivisor ? Color.WHITE : Color.BLACK);
-
             //after each image processed, we'll need to wait until the next frame
+            if (mBlocksMedian[2] < colorDivisor) {
+                if (mBlocksMedian[1] < colorDivisor) Logger.Log("Esquerda Leve");
+                if (mBlocksMedian[3] < colorDivisor) Logger.Log("Direita Leve");
+            }
+            if (mBlocksMedian[1] < colorDivisor && mBlocksMedian[0] < colorDivisor)
+                Logger.Log("Esquerda Brusca");
+            if (mBlocksMedian[3] < colorDivisor && mBlocksMedian[4] < colorDivisor)
+                Logger.Log("Esquerda Brusca");
             canProcess = false;
         }
     }

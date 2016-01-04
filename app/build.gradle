@@ -7,7 +7,6 @@ android {
     defaultConfig {
         applicationId "com.example.granix.linefollow"
         minSdkVersion 15
-        compileSdkVersion 23
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
